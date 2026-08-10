@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Cloud Resume Challenge - visitor counter backend
+Resources:
+  VisitorCounterTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-resume-visitors
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+  VisitorCounterApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+        - https://d6zrkzcmxjua2.cloudfront.net
+        - https://asherstaana.dev
+        - https://www.asherstaana.dev
+        AllowMethods:
+        - GET
+  VisitorCounterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cloud-resume-counter
+      CodeUri: VisitorCounterFunction
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.14
+      Timeout: 10
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: VisitorCounterTable
+      Environment:
+        Variables:
+          TABLE_NAME:
+            Ref: VisitorCounterTable
+      Events:
+        CounterApi:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: VisitorCounterApi
+            Path: /count
+            Method: get
+    Metadata:
+      SamResourceId: VisitorCounterFunction
+Outputs:
+  ApiUrl:
+    Description: The invoke URL for the visitor counter API
+    Value:
+      Fn::Sub: https://${VisitorCounterApi}.execute-api.${AWS::Region}.amazonaws.com/count
