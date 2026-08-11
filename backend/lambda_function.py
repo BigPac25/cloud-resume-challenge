@@ -11,7 +11,11 @@ def lambda_handler(event, context):
         }
     )
 
-    visitor_count = response["Item"]["count"]
+    if "Item" in response:
+        visitor_count = response["Item"]["count"]
+    else:
+        visitor_count = 0
+
     visitor_count += 1
 
     table.put_item(
@@ -22,6 +26,6 @@ def lambda_handler(event, context):
     )
 
     return {
-    'statusCode': 200,
-    'body': json.dumps({"count": int(visitor_count)})
+        'statusCode': 200,
+        'body': json.dumps({"count": int(visitor_count)})
     }
