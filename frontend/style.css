@@ -5,11 +5,16 @@
     font-family: 'EB Garamond', Garamond, serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     padding: 20px 0;
+
 }
 
 @keyframes fadeInUp {
@@ -33,8 +38,9 @@ body {
     display: flex;      
     flex-direction: column; 
     animation: fadeInUp 0.5s ease-out;
-    zoom: 0.85;
+    zoom: 0.9;
 }
+
 
 .section {
     display: flex;
