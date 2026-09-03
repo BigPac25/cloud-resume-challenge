@@ -45,7 +45,7 @@ body {
 .section {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 14px;
 }
 
 .secDeets{
@@ -71,17 +71,18 @@ body {
 
 .secHead h2 {
     border-bottom: 1px solid black;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .title{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 7px;
 }
 
 .title h3{
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .leftDiv ul{
@@ -90,7 +91,7 @@ body {
 }
 
 .leftDiv h3{
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .rightDiv{
@@ -100,16 +101,20 @@ body {
 }
 
 .rightDiv h3{
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .lowerDeets li, ul {
-    margin-left: 20px;
-    font-size: 15px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.lowerDeets p {
+    font-size: 14px;
 }
 
 footer {
-    margin-top: auto;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,4 +130,9 @@ footer {
 
 #subHeader {
     font-size: 15px;
+}
+
+.stack {
+    font-weight: normal;
+    /*font-style: italic; */
 }
