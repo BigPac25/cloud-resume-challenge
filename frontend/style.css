@@ -109,6 +109,11 @@ body {
     font-size: 14px;
 }
 
+.secDeets li, ul {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
 .lowerDeets p {
     font-size: 14px;
 }
@@ -134,5 +139,13 @@ footer {
 
 .stack {
     font-weight: normal;
-    /*font-style: italic; */
+    font-style: italic;
+}
+
+.deets {
+    font-weight: normal;
+}
+
+.skill {
+    margin-top: 0 !important;
 }
